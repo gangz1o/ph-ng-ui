@@ -1,0 +1,16 @@
+{
+  "header": {
+    "brand": "发布助手",
+    "home": "主页",
+    "settings": "设置",
+    "logout": "登出",
+    "login": "登录"
+  },
+  "footer": {
+    "brand": "发布助手™",
+    "rightsReserved": "所有权利保留"
+  },
+  "home": {
+    "todayTrending": "今日趋势"
+  }
+}

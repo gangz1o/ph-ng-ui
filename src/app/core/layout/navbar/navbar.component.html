@@ -1,0 +1,48 @@
+<ng-container *transloco="let translate">
+  <div class="app-navbar w-full h-16 flex justify-between border-b shadow-md">
+    <!-- logo 区域 -->
+    <div class="header-logo flex items-center">
+      <img
+        src="https://i.pinimg.com/474x/d6/24/20/d624205191966cc91992dfbdcb84e709.jpg"
+        class="logo"
+        alt="logo" />
+      <span>{{ translate('header.brand') }}</span>
+    </div>
+
+    <!-- menu 区域 -->
+    <div class="header-menu flex items-center gap-4">
+      <p-button
+        label="{{ translate('header.home') }}"
+        styleClass="p-button-text"
+        [style]="{ 'font-weight': 'bold', color: 'black' }"
+        icon="pi pi-home"
+        routerLink="/"
+        routerLinkActive="p-button-raised"
+        (click)="router.navigate(['/'])" />
+      <p-button
+        label="{{ translate('header.settings') }}"
+        styleClass="p-button-text"
+        [style]="{ 'font-weight': 'bold', color: 'black' }"
+        icon="pi pi-cog"
+        routerLink="/settings"
+        routerLinkActive="p-button-raised"
+        (click)="router.navigate(['/settings'])" />
+    </div>
+
+    <!-- user 区域 -->
+    <div class="header-user flex items-center">
+      <p-button
+        icon="pi pi-language"
+        variant="text"
+        class="mr-2"
+        (click)="menu.toggle($event)"
+        aria-label="Language" />
+      <p-tieredmenu #menu [model]="langs" [popup]="true" />
+      <ul class="flex">
+        <li>
+          <a routerLink="/login">{{ translate('header.login') }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-container>

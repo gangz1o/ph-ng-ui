@@ -1,0 +1,16 @@
+{
+  "header": {
+    "brand": "Publish Helper",
+    "home": "Home",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login"
+  },
+  "footer": {
+    "brand": "Publish Helper™",
+    "rightsReserved": "All Rights Reserved"
+  },
+  "home": {
+    "todayTrending": "Today's Trending"
+  }
+}

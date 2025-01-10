@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core'
+import { RouterModule } from '@angular/router'
+import { ButtonModule } from 'primeng/button'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [ButtonModule, RouterModule],
+  template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {
-  title = 'ph-ng-ui';
+  title = 'ph-ng-ui'
 }
