@@ -4,13 +4,20 @@
     "home": "Home",
     "settings": "Settings",
     "logout": "Logout",
-    "login": "Login"
+    "login": "Login",
+    "sources": "Resource types"
   },
   "footer": {
     "brand": "Publish Helper™",
-    "rightsReserved": "All Rights Reserved"
+    "rightsReserved": "All Rights Reserved",
+    "about": "About"
   },
   "home": {
     "todayTrending": "Today's Trending"
+  },
+  "sources": {
+    "movies": "Movies",
+    "series": "TV Series",
+    "dramas": "Dramas"
   }
 }

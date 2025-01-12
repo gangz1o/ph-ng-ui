@@ -8,7 +8,11 @@
     "at-rule-empty-line-before": [
       "always",
       {
-        "except": ["blockless-after-same-name-blockless", "first-nested", "inside-block"],
+        "except": [
+          "blockless-after-same-name-blockless",
+          "first-nested",
+          "inside-block"
+        ],
         "ignore": ["after-comment", "first-nested"]
       }
     ],

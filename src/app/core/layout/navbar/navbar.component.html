@@ -1,7 +1,8 @@
 <ng-container *transloco="let translate">
-  <div class="app-navbar w-full h-16 flex justify-between border-b shadow-md">
+  <div
+    class="app-navbar w-full h-16 flex justify-between border-b shadow-md bg-white mb-4">
     <!-- logo 区域 -->
-    <div class="header-logo flex items-center">
+    <div class="header-logo flex items-center ml-8">
       <img
         src="https://i.pinimg.com/474x/d6/24/20/d624205191966cc91992dfbdcb84e709.jpg"
         class="logo"
@@ -10,39 +11,54 @@
     </div>
 
     <!-- menu 区域 -->
-    <div class="header-menu flex items-center gap-4">
-      <p-button
-        label="{{ translate('header.home') }}"
-        styleClass="p-button-text"
-        [style]="{ 'font-weight': 'bold', color: 'black' }"
-        icon="pi pi-home"
-        routerLink="/"
-        routerLinkActive="p-button-raised"
-        (click)="router.navigate(['/'])" />
-      <p-button
-        label="{{ translate('header.settings') }}"
-        styleClass="p-button-text"
-        [style]="{ 'font-weight': 'bold', color: 'black' }"
-        icon="pi pi-cog"
-        routerLink="/settings"
-        routerLinkActive="p-button-raised"
-        (click)="router.navigate(['/settings'])" />
+    <div class="header-menu flex items-center cursor-pointer">
+      <p-menubar [model]="items">
+        <ng-template #item let-item>
+          <ng-container>
+            <a
+              [routerLink]="item.route"
+              class="tab-item"
+              [routerLinkActive]="['active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+              <span [class]="item.icon"></span>
+              <span class="ml-4 mr-4">{{ translate(item.label) }}</span>
+            </a>
+          </ng-container>
+          <ng-template #noLink>
+            <div class="p-menubar-item-link">
+              <a
+                [routerLink]="item.route"
+                class="tab-item"
+                [routerLinkActive]="['active']"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <span [class]="item.icon"></span>
+                <span>{{ translate(item.label) }}</span>
+              </a>
+            </div>
+          </ng-template>
+        </ng-template>
+      </p-menubar>
     </div>
 
     <!-- user 区域 -->
-    <div class="header-user flex items-center">
+    <div class="header-user flex items-center pr-8">
       <p-button
         icon="pi pi-language"
         variant="text"
-        class="mr-2"
+        size="large"
+        severity="secondary"
+        class="mr-4"
         (click)="menu.toggle($event)"
         aria-label="Language" />
       <p-tieredmenu #menu [model]="langs" [popup]="true" />
-      <ul class="flex">
-        <li>
-          <a routerLink="/login">{{ translate('header.login') }}</a>
-        </li>
-      </ul>
+      <div class="flex">
+        <p-avatar
+          image="https://primefaces.org/cdn/primeng/images/demo/avatar/asiyajavayant.png"
+          class="mr-2 cursor-pointer"
+          shape="circle"
+          (click)="userMenu.toggle($event)" />
+        <p-tieredmenu #userMenu [model]="userMenuItems" [popup]="true" />
+      </div>
     </div>
   </div>
 </ng-container>

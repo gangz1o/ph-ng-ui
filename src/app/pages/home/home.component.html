@@ -1,8 +1,8 @@
-<ng-container *transloco="let t; lang: translocoService.getActiveLang()">
+<ng-container *transloco="let translate">
   <div
     class="home-container"
     [ngClass]="{ loading: isLoading, loaded: !isLoading }">
-    <h2>{{ t('home.todayTrending') }}</h2>
+    <h2>{{ translate('home.todayTrending') }}</h2>
     <p-carousel
       [value]="trendingItems"
       [numVisible]="5"
@@ -13,7 +13,8 @@
       <ng-template let-item pTemplate="item">
         <div class="carousel-item">
           <img
-            [src]="item.poster"
+            lazyload
+            [src]="item.poster.replace('/original/', '/w500/')"
             [alt]="item.title"
             class="poster-image"
             (click)="openTmdbDetail(item)"
@@ -21,7 +22,7 @@
               item.poster = 'https://via.placeholder.com/500x750?text=No+Image'
             " />
           <div class="item-details">
-            <h3 class="blod">{{ item.title }}</h3>
+            <h3>{{ item.title }}</h3>
             <p class="rating flex justify-between">
               <span>⭐ {{ item.rating }}</span>
               <span>{{ item.media_type }}</span>

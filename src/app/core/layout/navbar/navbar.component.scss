@@ -1,25 +1,16 @@
 .app-navbar {
-  width: 100%;
-  height: 4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 0 2rem;
-
   .header-logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
 
     .logo {
       height: 2.5rem;
     }
 
     span {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.45rem;
+      font-weight: 400;
       color: var(--primary-color);
     }
   }
@@ -28,63 +19,57 @@
     ::ng-deep .p-menubar {
       background: transparent;
       border: none;
-
-      .p-menuitem-link {
-        padding: 0.75rem 1rem;
-        border-radius: 0.375rem;
-        transition: all 0.2s ease;
-
-        &:hover {
-          background: rgba(0, 0, 0, 0.05);
-        }
-
-        &.p-menuitem-link-active {
-          color: var(--primary-color);
-          position: relative;
-
-          &::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transform: translateX(-50%);
-            transition: width 0.2s ease 0.1s;
-          }
-        }
-
-        &.p-menuitem-link-active:hover::after {
-          width: 100%;
-        }
-      }
     }
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--primary-color);
   }
+}
 
-  .header-user {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+/* Tab 容器样式 */
+.tab-item {
+  position: relative;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000; /* 默认文字颜色 */
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+  display: inline-block;
+}
 
-    ul {
-      display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
+/* 鼠标悬停效果 */
+.tab-item:hover {
+  background-color: #f0f0f0; /* 悬停背景色 */
+  color: #10b981; /* 悬停文字颜色 */
+}
 
-      li {
-        a {
-          text-decoration: none;
-          color: inherit;
-          transition: color 0.2s ease;
+/* 激活 Tab 样式 */
+.tab-item.active {
+  color: #10b981; /* 激活文字颜色 */
+  font-weight: bold;
+}
 
-          &:hover {
-            color: var(--primary-color);
-          }
-        }
-      }
-    }
-  }
+/* 底部边框动画 */
+.tab-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #10b981; /* 底部边框颜色 */
+  transform: scaleX(0); /* 初始状态：隐藏 */
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* 激活时底部边框动画 */
+.tab-item.active::after {
+  transform: scaleX(1); /* 激活状态：显示 */
+}
+
+/* 鼠标悬停时底部边框动画 */
+.tab-item:hover::after {
+  transform: scaleX(1); /* 悬停状态：显示 */
 }
