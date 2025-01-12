@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-
+import { Component } from '@angular/core'
+import { CardModule } from 'primeng/card'
 @Component({
   selector: 'app-settings',
-  imports: [],
+  imports: [CardModule],
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.scss'
+  styleUrl: './settings.component.scss',
 })
-export class SettingsComponent {
-
-}
+export class SettingsComponent {}

@@ -3,3 +3,30 @@
 @tailwind utilities;
 
 @import 'primeicons/primeicons.css';
+
+html,
+body {
+  height: 100%; /* 确保高度占满整个视口 */
+  margin: 0; /* 移除默认的外边距 */
+}
+
+body {
+  background: linear-gradient(
+      155deg,
+      rgba(255, 220, 229, 0.5),
+      rgba(199, 229, 255, 0.5)
+    )
+    no-repeat;
+  font-family: Arial, sans-serif; /* 设置默认字体 */
+}
+
+.app-navbar {
+  .p-menubar-submenu {
+    min-width: 9.5rem !important;
+    text-align: center !important;
+    margin-top: 6px;
+  }
+  .p-tieredmenu {
+    min-width: 6rem !important;
+  }
+}
