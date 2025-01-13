@@ -1,8 +1,11 @@
 import { Component } from '@angular/core'
-import { CardModule } from 'primeng/card'
+import { TranslocoModule } from '@ngneat/transloco'
+import { ButtonModule } from 'primeng/button'
+import { PanelModule } from 'primeng/panel'
+import { FooterComponent } from '../../core/layout/footer/footer.component'
 @Component({
   selector: 'app-settings',
-  imports: [CardModule],
+  imports: [PanelModule, TranslocoModule, ButtonModule, FooterComponent],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })

@@ -19,5 +19,12 @@
     "movies": "电影",
     "series": "电视剧",
     "dramas": "短剧"
+  },
+  "settings": {
+    "generalSettings": "通用",
+    "moviesSettings": "电影",
+    "seriesSettings": "电视剧",
+    "dramasSettings": "短剧",
+    "save": "保存"
   }
 }

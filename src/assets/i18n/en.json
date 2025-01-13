@@ -19,5 +19,12 @@
     "movies": "Movies",
     "series": "TV Series",
     "dramas": "Dramas"
+  },
+  "settings": {
+    "generalSettings": "General",
+    "moviesSettings": "Movies",
+    "seriesSettings": "TV Series",
+    "dramasSettings": "Dramas",
+    "save": "Save"
   }
 }
