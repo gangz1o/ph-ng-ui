@@ -26,5 +26,12 @@
     "seriesSettings": "电视剧",
     "dramasSettings": "短剧",
     "save": "保存"
+  },
+  "generalSettings": {
+    "pt_gen_api_url": "PT-Gen API 地址",
+    "picture_bed_api_url": "图床 API 地址",
+    "picture_bed_api_token": "图床 API Token",
+    "screenshot_storage_path": "截图存储路径",
+    "torrent_storage_path": "种子存储路径"
   }
 }

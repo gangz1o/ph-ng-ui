@@ -26,5 +26,12 @@
     "seriesSettings": "TV Series",
     "dramasSettings": "Dramas",
     "save": "Save"
+  },
+  "generalSettings": {
+    "pt_gen_api_url": "PT-Gen API URL",
+    "picture_bed_api_url": "Picture Bed API URL",
+    "picture_bed_api_token": "Picture Bed API Token",
+    "screenshot_storage_path": "Screenshot Storage Path",
+    "torrent_storage_path": "Torrent Storage Path"
   }
 }
