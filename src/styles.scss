@@ -8,6 +8,7 @@ html,
 body {
   height: 100%; /* 确保高度占满整个视口 */
   margin: 0; /* 移除默认的外边距 */
+  overflow: auto;
 }
 
 body {

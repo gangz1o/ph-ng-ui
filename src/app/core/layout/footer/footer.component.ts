@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core'
 import { TranslocoModule, TranslocoService } from '@ngneat/transloco'
-
 @Component({
   selector: 'app-footer',
   imports: [TranslocoModule],
