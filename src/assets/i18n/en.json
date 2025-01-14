@@ -32,6 +32,17 @@
     "picture_bed_api_url": "Picture Bed API URL",
     "picture_bed_api_token": "Picture Bed API Token",
     "screenshot_storage_path": "Screenshot Storage Path",
-    "torrent_storage_path": "Torrent Storage Path"
+    "torrent_storage_path": "Torrent Storage Path",
+    "apiRelated": "API Related",
+    "storagePath": "Storage Path",
+    "screenShotSettings": "Screen Shot Settings",
+    "screenshotNumber": "Screenshot Number",
+    "screenshotThreshold": "Screenshot Threshold",
+    "screenshotStartPercentage": "Screenshot Start Percentage",
+    "screenshotEndPercentage": "Screenshot End Percentage",
+    "screenShotAutoUpload": "Auto Upload Screenshot",
+    "pasteScreenshotURL": "Paste Screenshot URL",
+    "deleteScreenshot": "Delete Screenshot",
+    "mediaInfoSuffix": "Media Info Suffix"
   }
 }

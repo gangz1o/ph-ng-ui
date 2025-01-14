@@ -32,6 +32,17 @@
     "picture_bed_api_url": "图床 API 地址",
     "picture_bed_api_token": "图床 API Token",
     "screenshot_storage_path": "截图存储路径",
-    "torrent_storage_path": "种子存储路径"
+    "torrent_storage_path": "种子存储路径",
+    "apiRelated": "API 相关",
+    "storagePath": "存储路径",
+    "screenShotSettings": "截图设置",
+    "screenshotNumber": "截图数量",
+    "screenshotThreshold": "截图复杂度参数",
+    "screenshotStartPercentage": "截图开始百分比",
+    "screenshotEndPercentage": "截图结束百分比",
+    "screenShotAutoUpload": "自动上传截图",
+    "pasteScreenshotURL": "粘贴截图 URL 到简介后",
+    "deleteScreenshot": "是否删除截图",
+    "mediaInfoSuffix": "是否启用媒体信息后缀"
   }
 }
