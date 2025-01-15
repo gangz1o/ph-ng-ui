@@ -29,32 +29,19 @@
 
             <div class="grid grid-cols-2 gap-8 my-8">
               <!-- PT-Gen接口地址 -->
-              @let ptGenApiUrl = configForm!.get('pt_gen_api_url')?.value;
               <div class="flex flex-col gap-2">
-                <label for="pt_gen_api_url">{{ translate('generalSettings.pt_gen_api_url') }}</label>
-                <input pInputText required [value]="ptGenApiUrl" formControlName="pt_gen_api_url" id="pt_gen_api_url" />
+                <label>{{ translate('generalSettings.pt_gen_api_url') }}</label>
+                <input pInputText required [formControlName]="settingsName.PtGenApiUrl" />
               </div>
               <!-- 图床接口地址 -->
-              @let pictureBedApiUrl = configForm!.get('picture_bed_api_url')?.value;
               <div class="flex flex-col gap-2">
-                <label for="picture_bed_api_url">{{ translate('generalSettings.picture_bed_api_url') }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="pictureBedApiUrl"
-                  formControlName="picture_bed_api_url"
-                  id="picture_bed_api_url" />
+                <label>{{ translate('generalSettings.picture_bed_api_url') }}</label>
+                <input pInputText required [formControlName]="settingsName.PictureBedApiUrl" />
               </div>
               <!-- 图床API Token -->
-              @let pictureBedApiToken = configForm!.get('picture_bed_api_token')?.value;
               <div class="flex flex-col gap-2">
-                <label for="picture_bed_api_token">{{ translate('generalSettings.picture_bed_api_token') }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="pictureBedApiToken"
-                  formControlName="picture_bed_api_token"
-                  id="picture_bed_api_token" />
+                <label>{{ translate('generalSettings.picture_bed_api_token') }}</label>
+                <input pInputText required [formControlName]="settingsName.PictureBedApiToken" />
               </div>
             </div>
             <div class="divider">
@@ -62,26 +49,14 @@
             </div>
             <div class="grid grid-cols-2 gap-8 my-8">
               <!-- 截图存储地址 -->
-              @let screenshotDir = configForm!.get('screenshot_storage_path')?.value;
               <div class="flex flex-col gap-2">
-                <label for="screenshot_storage_path">{{ translate('generalSettings.screenshot_storage_path') }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="screenshotDir"
-                  formControlName="screenshot_storage_path"
-                  id="screenshot_storage_path" />
+                <label>{{ translate('generalSettings.screenshot_storage_path') }}</label>
+                <input pInputText required [formControlName]="settingsName.ScreenshotStoragePath" />
               </div>
               <!-- 种子存储地址 -->
-              @let torrentStoragePath = configForm!.get('torrent_storage_path')?.value;
               <div class="flex flex-col gap-2">
-                <label for="torrent_storage_path">{{ translate('generalSettings.torrent_storage_path') }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="torrentStoragePath"
-                  formControlName="torrent_storage_path"
-                  id="torrent_storage_path" />
+                <label>{{ translate('generalSettings.torrent_storage_path') }}</label>
+                <input pInputText required [formControlName]="settingsName.TorrentStoragePath" />
               </div>
             </div>
             <div class="divider">
@@ -89,74 +64,52 @@
             </div>
             <div class="grid grid-cols-4 gap-8 my-8">
               <!-- 截图数量 -->
-              @let screenshotNumber = configForm!.get('screenshot_number')?.value;
               <div class="flex flex-col gap-2">
-                <label for="screenshot_number">{{ translate('generalSettings.screenshotNumber') }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="screenshotNumber"
-                  formControlName="screenshot_number"
-                  id="screenshot_number" />
+                <label>{{ translate('generalSettings.screenshotNumber') }}</label>
+                <input pInputText required [formControlName]="settingsName.ScreenshotNumber" />
               </div>
               <!-- 截图阈值 -->
-              @let screenshotThreshold = configForm!.get('screenshot_threshold')?.value;
               <div class="flex flex-col gap-2">
-                <label for="screenshot_threshold">{{ translate('generalSettings.screenshotThreshold') }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="screenshotThreshold"
-                  formControlName="screenshot_threshold"
-                  id="screenshot_threshold" />
+                <label>{{ translate('generalSettings.screenshotThreshold') }}</label>
+                <input pInputText required [formControlName]="settingsName.ScreenshotThreshold" />
               </div>
               <!-- 截图开始百分比 -->
-              @let screenshotStartPercentage = configForm!.get('screenshot_start_percentage')?.value;
               <div class="flex flex-col gap-2">
-                <label for="screenshot_start_percentage">{{
-                  translate('generalSettings.screenshotStartPercentage')
-                }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="screenshotStartPercentage"
-                  formControlName="screenshot_start_percentage"
-                  id="screenshot_start_percentage" />
+                <label>{{ translate('generalSettings.screenshotStartPercentage') }}</label>
+                <input pInputText required [formControlName]="settingsName.ScreenshotStartPercentage" />
               </div>
               <!-- 截图结束百分比 -->
-              @let screenshotEndPercentage = configForm!.get('screenshot_end_percentage')?.value;
               <div class="flex flex-col gap-2">
-                <label for="screenshot_end_percentage">{{
-                  translate('generalSettings.screenshotEndPercentage')
-                }}</label>
-                <input
-                  pInputText
-                  required
-                  [value]="screenshotEndPercentage"
-                  formControlName="screenshot_end_percentage"
-                  id="screenshot_end_percentage" />
+                <label>{{ translate('generalSettings.screenshotEndPercentage') }}</label>
+                <input pInputText required [formControlName]="settingsName.ScreenshotEndPercentage" />
               </div>
               <!-- 自动截图 -->
               <div class="flex flex-col gap-2">
-                <label for="screenshot_auto">{{ translate('generalSettings.screenShotAutoUpload') }}</label>
-                <p-toggleswitch formControlName="auto_upload_screenshot" />
+                <label>{{ translate('generalSettings.screenShotAutoUpload') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.AutoUploadScreenshot" />
               </div>
               <!-- 是否粘贴截图URL到简介后 -->
               <div class="flex flex-col gap-2">
-                <label for="paste_screenshot_url">{{ translate('generalSettings.pasteScreenshotURL') }}</label>
-                <p-toggleswitch formControlName="paste_screenshot_url" />
+                <label>{{ translate('generalSettings.pasteScreenshotURL') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.PasteScreenshotUrl" />
               </div>
 
               <!-- 是否删除截图 -->
               <div class="flex flex-col gap-2">
-                <label for="delete_screenshot">{{ translate('generalSettings.deleteScreenshot') }}</label>
-                <p-toggleswitch formControlName="delete_screenshot" />
+                <label>{{ translate('generalSettings.deleteScreenshot') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.DeleteScreenshot" />
               </div>
 
               <!-- 是否启用媒体信息后缀 -->
               <div class="flex flex-col gap-2">
-                <label for="media_info_suffix">{{ translate('generalSettings.mediaInfoSuffix') }}</label>
-                <p-toggleswitch formControlName="media_info_suffix" />
+                <label>{{ translate('generalSettings.mediaInfoSuffix') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.MediaInfoSuffix" />
+              </div>
+
+              <!-- 是否生成缩略图 -->
+              <div class="flex flex-col gap-2">
+                <label>{{ translate('generalSettings.generateThumbnail') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.DoGetThumbnail" />
               </div>
             </div>
             <div class="flex justify-end">

@@ -9,9 +9,9 @@ import { Settings, SettingsName } from '../../constrants/settingsName'
 })
 export class GetSettingsService {
   http = inject(HttpClient)
-  apiBaseUrl = environment.apiBaseUrl
+  apiBaseUrl = environment.apiBaseUrl + '/getSettings'
 
   getSettings(settingsName: SettingsName): Observable<Settings> {
-    return this.http.get<Settings>(`${this.apiBaseUrl}/${settingsName}`)
+    return this.http.get<Settings>(`${this.apiBaseUrl}?settingsName=${settingsName}`)
   }
 }

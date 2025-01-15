@@ -41,8 +41,9 @@
     "screenshotStartPercentage": "Screenshot Start Percentage",
     "screenshotEndPercentage": "Screenshot End Percentage",
     "screenShotAutoUpload": "Auto Upload Screenshot",
-    "pasteScreenshotURL": "Paste Screenshot URL",
+    "pasteScreenshotURL": "Paste Screenshot URL After Intro",
     "deleteScreenshot": "Delete Screenshot",
-    "mediaInfoSuffix": "Media Info Suffix"
+    "mediaInfoSuffix": "Media Info Suffix",
+    "generateThumbnail": "Generate Thumbnail"
   }
 }

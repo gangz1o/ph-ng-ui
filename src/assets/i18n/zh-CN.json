@@ -42,7 +42,8 @@
     "screenshotEndPercentage": "截图结束百分比",
     "screenShotAutoUpload": "自动上传截图",
     "pasteScreenshotURL": "粘贴截图 URL 到简介后",
-    "deleteScreenshot": "是否删除截图",
-    "mediaInfoSuffix": "是否启用媒体信息后缀"
+    "deleteScreenshot": "删除截图",
+    "mediaInfoSuffix": "启用媒体信息后缀",
+    "generateThumbnail": "生成缩略图"
   }
 }
