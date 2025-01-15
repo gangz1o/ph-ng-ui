@@ -1,11 +1,20 @@
 <ng-container *transloco="let translate">
-  <form [formGroup]="configForm" (ngSubmit)="handleSubmitSettings()">
+  <p-toast
+    key="br"
+    position="top-right"
+    [breakpoints]="{ '920px': { width: '100%' }, '640px': { width: '90%' } }"></p-toast>
+  <form [formGroup]="configForm" (ngSubmit)="handleSubmitSettings(configForm)">
     <p-fluid>
       <div class="container mx-auto px-4">
         <div class="flex flex-col gap-8 max-w-[1200px] mx-auto">
-          <p-panel [collapsed]="false" icon="pi pi-cog" [iconPos]="'center'" [styleClass]="'mt-16'" [toggleable]="true">
+          <p-panel
+            [collapsed]="generalCollapsed"
+            icon="pi pi-cog"
+            [iconPos]="'center'"
+            [styleClass]="'mt-16'"
+            [toggleable]="true">
             <ng-template #header>
-              <div class="flex items-center gap-2 text-xl">
+              <div class="flex items-center gap-2 text-xl cursor-pointer" (click)="toggleGeneral()">
                 <svg
                   t="1736750726555"
                   class="icon"
@@ -24,93 +33,289 @@
               </div>
             </ng-template>
             <div class="divider">
-              <span>{{ translate('generalSettings.apiRelated') }}</span>
+              <span>{{ translate('generalSettings.api_related') }}</span>
             </div>
-
-            <div class="grid grid-cols-2 gap-8 my-8">
+            <div class="grid grid-cols-3 gap-8 my-8">
               <!-- PT-Gen接口地址 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.pt_gen_api_url') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.pt_gen_api_url') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.PtGenApiUrl" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.PtGenApiUrl)?.errors?.['required'] &&
+                    configForm.get(settingsName.PtGenApiUrl)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
               <!-- 图床接口地址 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.picture_bed_api_url') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.picture_bed_api_url') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.PictureBedApiUrl" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.PictureBedApiUrl)?.errors?.['required'] &&
+                    configForm.get(settingsName.PictureBedApiUrl)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
               <!-- 图床API Token -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.picture_bed_api_token') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.picture_bed_api_token') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.PictureBedApiToken" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.PictureBedApiToken)?.errors?.['required'] &&
+                    configForm.get(settingsName.PictureBedApiToken)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
             </div>
             <div class="divider">
-              <span>{{ translate('generalSettings.storagePath') }}</span>
+              <span>{{ translate('generalSettings.storage_path') }}</span>
             </div>
             <div class="grid grid-cols-2 gap-8 my-8">
               <!-- 截图存储地址 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.screenshot_storage_path') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.screenshot_storage_path') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.ScreenshotStoragePath" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ScreenshotStoragePath)?.errors?.['required'] &&
+                    configForm.get(settingsName.ScreenshotStoragePath)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
               <!-- 种子存储地址 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.torrent_storage_path') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.torrent_storage_path') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.TorrentStoragePath" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.TorrentStoragePath)?.errors?.['required'] &&
+                    configForm.get(settingsName.TorrentStoragePath)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
             </div>
             <div class="divider">
-              <span>{{ translate('generalSettings.screenShotSettings') }}</span>
+              <span>{{ translate('generalSettings.screen_shot_settings') }}</span>
             </div>
             <div class="grid grid-cols-4 gap-8 my-8">
               <!-- 截图数量 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.screenshotNumber') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.screenshot_number') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.ScreenshotNumber" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ScreenshotNumber)?.errors?.['required'] &&
+                    configForm.get(settingsName.ScreenshotNumber)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
               <!-- 截图阈值 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.screenshotThreshold') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.screenshot_threshold') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.ScreenshotThreshold" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ScreenshotThreshold)?.errors?.['required'] &&
+                    configForm.get(settingsName.ScreenshotThreshold)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
               <!-- 截图开始百分比 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.screenshotStartPercentage') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.screenshot_start_percentage') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.ScreenshotStartPercentage" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ScreenshotStartPercentage)?.errors?.['required'] &&
+                    configForm.get(settingsName.ScreenshotStartPercentage)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
               <!-- 截图结束百分比 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.screenshotEndPercentage') }}</label>
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.screenshot_end_percentage') }}
+                  <span class="text-red-500">*</span>
+                </label>
                 <input pInputText required [formControlName]="settingsName.ScreenshotEndPercentage" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ScreenshotEndPercentage)?.errors?.['required'] &&
+                    configForm.get(settingsName.ScreenshotEndPercentage)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
               </div>
-              <!-- 自动截图 -->
+            </div>
+            <div class="grid grid-cols-4 gap-8 my-8">
+              <!-- 自动上传截图 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.screenShotAutoUpload') }}</label>
+                <label>{{ translate('generalSettings.screen_shot_auto_upload') }}</label>
                 <p-toggleswitch [formControlName]="settingsName.AutoUploadScreenshot" />
               </div>
               <!-- 是否粘贴截图URL到简介后 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.pasteScreenshotURL') }}</label>
+                <label>{{ translate('generalSettings.paste_screenshot_url') }}</label>
                 <p-toggleswitch [formControlName]="settingsName.PasteScreenshotUrl" />
               </div>
 
               <!-- 是否删除截图 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.deleteScreenshot') }}</label>
+                <label>{{ translate('generalSettings.delete_screenshot') }}</label>
                 <p-toggleswitch [formControlName]="settingsName.DeleteScreenshot" />
               </div>
 
               <!-- 是否启用媒体信息后缀 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.mediaInfoSuffix') }}</label>
+                <label>{{ translate('generalSettings.media_info_suffix') }}</label>
                 <p-toggleswitch [formControlName]="settingsName.MediaInfoSuffix" />
               </div>
 
               <!-- 是否生成缩略图 -->
               <div class="flex flex-col gap-2">
-                <label>{{ translate('generalSettings.generateThumbnail') }}</label>
+                <label>{{ translate('generalSettings.generate_thumbnail') }}</label>
                 <p-toggleswitch [formControlName]="settingsName.DoGetThumbnail" />
               </div>
+            </div>
+            <div class="grid grid-cols-4 gap-8 my-8">
+              <!-- 缩略图横向数量 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.thumbnail_rows_number') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.ThumbnailRows" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ThumbnailRows)?.errors?.['required'] &&
+                    configForm.get(settingsName.ThumbnailRows)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 缩略图纵向数量 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.thumbnail_cols_number') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.ThumbnailCols" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ThumbnailCols)?.errors?.['required'] &&
+                    configForm.get(settingsName.ThumbnailCols)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 缩略图延迟 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('generalSettings.thumbnail_delay') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.ThumbnailDelay" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.ThumbnailDelay)?.errors?.['required'] &&
+                    configForm.get(settingsName.ThumbnailDelay)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+            </div>
+            <div class="divider">
+              <span>{{ translate('generalSettings.when_get_standard_file_name') }}</span>
+            </div>
+            <div class="grid grid-cols-4 gap-8 my-8">
+              <!-- 文件重命名 -->
+              <div class="flex flex-col gap-2">
+                <label>{{ translate('generalSettings.rename_file') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.RenameFile" />
+              </div>
+
+              <!-- 是否给电影文件创建同名文件夹 -->
+              <div class="flex flex-col gap-2">
+                <label>{{ translate('generalSettings.make_dir') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.MakeDir" />
+              </div>
+
+              <!-- 是否二次确认文件名 -->
+              <div class="flex flex-col gap-2">
+                <label>{{ translate('generalSettings.second_confirm_file_name') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.SecondConfirmFileName" />
+              </div>
+
+              <!-- 是否自动打开Auto Feed链接 -->
+              <div class="flex flex-col gap-2">
+                <label>{{ translate('generalSettings.open_auto_feed_link') }}</label>
+                <p-toggleswitch [formControlName]="settingsName.OpenAutoFeedLink" />
+              </div>
+            </div>
+            <!-- Auto Feed链接格式 -->
+            <div class="flex flex-col gap-2">
+              <label class="flex gap-1">
+                {{ translate('generalSettings.auto_feed_link') }}
+                <span class="text-red-500">*</span>
+              </label>
+              <input pInputText required [formControlName]="settingsName.AutoFeedLink" />
+              <small
+                class="text-red-500"
+                *ngIf="
+                  configForm.get(settingsName.AutoFeedLink)?.errors?.['required'] &&
+                  configForm.get(settingsName.AutoFeedLink)?.touched
+                ">
+                {{ translate('validation.required') }}
+              </small>
             </div>
             <div class="flex justify-end">
               <p-button
@@ -123,9 +328,9 @@
             </div>
           </p-panel>
           <!-- 电影设置 -->
-          <p-panel [collapsed]="true" [toggleable]="true">
+          <p-panel [collapsed]="moviesCollapsed" [toggleable]="true">
             <ng-template #header>
-              <div class="flex items-center gap-2 text-xl">
+              <div class="flex items-center gap-2 text-xl cursor-pointer" (click)="toggleMovies()">
                 <svg
                   t="1736750433292"
                   class="icon"
@@ -144,7 +349,7 @@
                     fill="#FFA500"
                     p-id="1770"></path>
                   <path
-                    d="M1023.52 449.792c-0.832-19.04-1.664-38.112-2.496-57.12-3.84-24.192-2.432-48.864-6.72-72.128-2.016-12.864-4-25.792-5.984-38.656-7.04-32.224-13.856-62.752-24.96-90.528-20.576-51.52-52.32-94.88-96.544-122.752-94.752-59.68-235.68-68.992-390.72-68.576-15.456 0.256-30.944 0.48-46.4 0.736-9.472 0.352-18.944 0.672-28.448 1.024-6.72 0.32-13.472 0.64-20.224 0.992-18.208 1.408-36.448 2.816-54.624 4.256-9.888 1.184-19.808 2.304-29.696 3.488-22.176 4.128-44.128 6.464-64.864 11.712-95.648 24.32-151.648 60.192-195.872 136.16-21.984 37.728-31.232 84.16-41.92 133.472-2.24 16.64-4.48 33.248-6.72 49.888-1.568 19.776-3.168 39.584-4.736 59.36-0.256 6.72-0.48 13.472-0.768 20.224-0.576 18.208-1.152 36.448-1.728 54.624l0 55.616c0.32 17.12 0.672 34.272 1.024 51.36 0.384 11.904 0.832 23.808 1.248 35.68 0.48 8.064 1.024 16.128 1.504 24.192 3.456 21.664 2.624 43.744 6.464 64.64 5.92 31.936 9.824 62.816 18.72 91.296 24.096 77.344 60.384 129.088 124.256 166.624 28.512 16.768 62.624 27.52 98.56 36.672 13.312 2.656 26.592 5.312 39.904 8 16.64 2.24 33.28 4.48 49.888 6.72 21.28 1.664 42.592 3.328 63.872 4.992 7.232 0.256 14.496 0.48 21.696 0.736 15.328 0.416 30.624 0.832 45.92 1.248 7.648 0.096 15.296 0.192 22.944 0.256l31.904 0c20.8-0.32 41.6-0.64 62.4-1.024 5.984-0.256 12-0.48 17.952-0.736 17.792-1.152 35.616-2.336 53.408-3.52 15.232-1.664 30.432-3.328 45.664-4.992 34.208-6.336 66.848-10.912 97.056-20.448 65.536-20.672 114.208-53.728 149.696-104.288 27.328-38.88 41.376-88.288 53.408-142.688 2.592-16.864 5.184-33.76 7.712-50.624 1.856-20.096 3.648-40.256 5.504-60.384 0.32-7.232 0.672-14.464 1.024-21.696 0.64-16.448 1.312-32.928 2.016-49.408l0-13.248c0.096-7.648 0.16-15.296 0.256-22.976l0-54.88c-0.192-7.808-0.352-15.616-0.512-23.424zM629.408 221.152c127.168 45.504 218.144 164.576 218.144 304.64 0 179.264-148.704 324.64-332.16 324.64-183.424 0-332.064-145.376-332.064-324.64s148.672-324.576 332.064-324.576c15.04 0 29.76 1.28 44.224 3.232 98.496-20 244.96-28.064 319.52 74.016l7.872 85.088c0-0.032-47.424-128.352-257.632-142.368z"
+                    d="M1023.52 449.792c-0.832-19.04-1.664-38.112-2.496-57.12-3.84-24.192-2.432-48.864-6.72-72.128-2.016-12.864-4-25.792-5.984-38.656-7.04-32.224-13.856-62.752-24.96-90.528-20.576-51.52-52.32-94.88-96.544-122.752-94.752-59.68-235.68-68.992-390.72-68.576-15.456 0.256-30.944 0.48-46.4 0.736-9.472 0.352-18.944 0.672-28.448 1.024-6.72 0.32-13.472 0.64-20.224 0.992-18.208 1.408-36.448 2.816-54.624 4.256-9.888 1.184-19.808 2.304-29.696 3.488-22.176 4.128-44.128 6.464-64.864 11.712-95.648 24.32-151.648 60.192-195.872 136.16-21.984 37.728-31.232 84.16-41.92 133.472-2.24 16.64-4.48 33.248-6.72 49.888-1.568 19.776-3.168 39.584-4.736 59.36-0.256 6.72-0.48 13.472-0.768 20.224-0.576 18.208-1.152 36.448-1.728 54.624l0 55.616c0 17.12 0.32 34.272 1.024 51.36 0.384 11.904 0.832 23.808 1.248 35.68 0.48 8.064 1.024 16.128 1.504 24.192 3.456 21.664 2.624 43.744 6.464 64.64 5.92 31.936 9.824 62.816 18.72 91.296 24.096 77.344 60.384 129.088 124.256 166.624 28.512 16.768 62.624 27.52 98.56 36.672 13.312 2.656 26.592 5.312 39.904 8 16.64 2.24 33.28 4.48 49.888 6.72 21.28 1.664 42.592 3.328 63.872 4.992 7.232 0.256 14.496 0.48 22.944 0.256l31.904 0c20.8-0.32 41.6-0.64 62.4-1.024 5.984-0.256 12-0.48 17.952-0.736 17.792-1.152 35.616-2.336 53.408-3.52 15.232-1.664 30.432-3.328 45.664-4.992 34.208-6.336 66.848-10.912 97.056-20.448 65.536-20.672 114.208-53.728 149.696-104.288 27.328-38.88 41.376-88.288 53.408-142.688 2.592-16.864 5.184-33.76 7.712-50.624 1.856-20.096 3.648-40.256 5.504-60.384 0.32-7.232 0.672-14.464 1.024-21.696 0.64-16.448 1.312-32.928 2.016-49.408l0-13.248c0.096-7.648 0.16-15.296 0.256-22.976l0-54.88c-0.192-7.808-0.352-15.616-0.512-23.424zM629.408 221.152c127.168 45.504 218.144 164.576 218.144 304.64 0 179.264-148.704 324.64-332.16 324.64-183.424 0-332.064-145.376-332.064-324.64s148.672-324.576 332.064-324.576c15.04 0 29.76 1.28 44.224 3.232 98.496-20 244.96-28.064 319.52 74.016l7.872 85.088c0-0.032-47.424-128.352-257.632-142.368z"
                     fill="#FFA500"
                     p-id="1771"></path>
                   <path
@@ -159,73 +364,165 @@
                 <span class="font-bold">{{ translate('settings.moviesSettings') }}</span>
               </div>
             </ng-template>
-            <p class="m-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
-            <div class="flex justify-end">
-              <p-button
-                label="{{ translate('settings.save') }}"
-                rounded
-                [icon]="'pi pi-save'"
-                [iconPos]="'left'"
-                [styleClass]="'bg-primary text-white mt-4 w-40'" />
+            <div class="flex flex-col gap-8 mt-8">
+              <!-- 主标题 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('moviesSettings.main_title_movie') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.MainTitleMovie" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.MainTitleMovie)?.errors?.['required'] &&
+                    configForm.get(settingsName.MainTitleMovie)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 副标题 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('moviesSettings.second_title_movie') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.SecondTitleMovie" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.SecondTitleMovie)?.errors?.['required'] &&
+                    configForm.get(settingsName.SecondTitleMovie)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 文件名 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('moviesSettings.file_name_movie') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.FileNameMovie" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.FileNameMovie)?.errors?.['required'] &&
+                    configForm.get(settingsName.FileNameMovie)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <div class="flex justify-end">
+                <p-button
+                  label="{{ translate('settings.save') }}"
+                  rounded
+                  [icon]="'pi pi-save'"
+                  [iconPos]="'left'"
+                  [styleClass]="'bg-primary text-white mt-4 w-40'" />
+              </div>
             </div>
           </p-panel>
 
           <!-- 电视剧设置 -->
-          <p-panel [collapsed]="true" [toggleable]="true">
+          <p-panel [collapsed]="seriesCollapsed" [toggleable]="true">
             <ng-template #header>
-              <div class="flex items-center gap-2 text-xl">
+              <div class="flex items-center gap-2 text-xl cursor-pointer" (click)="toggleSeries()">
                 <svg
-                  t="1736750825530"
+                  t="1736928250041"
                   class="icon"
                   viewBox="0 0 1024 1024"
                   version="1.1"
                   xmlns="http://www.w3.org/2000/svg"
-                  p-id="7748"
+                  p-id="4731"
                   width="32"
                   height="32">
                   <path
                     d="M253.2 207.9c-46.2 53.3-66.4 123.8-55.5 193.8l27.4 141.9c63.1 24.4 66.9 98.2 75 167.3 47.4-10.4 146.9-15.6 211.8-15.6 65 0 171 5.3 218.4 15.6 8.5-68.9 4.8-142 66.7-166.6L826.2 401c10.8-69.4-9.5-139.9-55.5-193.2-46.1-53.3-113.1-83.9-183.9-83.9H437.1c-70.7 0-137.8 30.6-183.9 84z"
                     fill="#FFB161"
-                    p-id="7749"></path>
+                    p-id="4732"></path>
                   <path
                     d="M513.3 392.7l-38.8-38.8c-8.4-8.4-22.2-8.4-30.6 0-8.5 8.5-8.5 22.2 0 30.6l28 27.9-28 28c-8.5 8.4-8.5 22.2 0 30.6 4.2 4.2 9.8 6.3 15.3 6.3s11.1-2.1 15.3-6.3l38.8-38.8 38.8 38.8c4.2 4.2 9.8 6.3 15.3 6.3s11.1-2.1 15.3-6.3c8.5-8.4 8.5-22.2 0-30.6l-28-28 28-27.9c8.5-8.4 8.5-22.2 0-30.6-4.2-4.2-9.8-6.3-15.3-6.3s-11.1 2.1-15.3 6.3l-38.8 38.8z"
                     fill="#FDDE80"
-                    p-id="7750"></path>
+                    p-id="4733"></path>
                   <path
                     d="M866.1 471C783.9 471 717 535.1 717 613.9v77.2l-410 1.8v-77.2c0-75.5-58.8-136.6-133.9-143.9l-15.2-0.8c-51.4 0-93.2 40.1-93.2 89.3 0 5 0.5 10 1.4 14.8 4.4 25.6 20.2 48.1 43.5 61.6l9.7 4.8 2.7 1.3c10.9 5.2 17.2 14.3 17.2 24.6v71.4c0 54.9 37.2 101.5 88.6 118.2 5 24.5 28.2 42.9 56 42.9 25.2 0 46.4-15.2 53.9-36.2h348.8c7.6 21 28.7 36.2 53.9 36.2 27.9 0 51-18.6 56-43.1 51.3-16.8 88.3-63.4 88.3-118.1v-71.4l1.2-7.9c1.7-5.1 4.7-9.5 8.9-12.8l1.7-1 5.3-3c30.5-12.2 51.6-38.5 56.4-69.1l1-13.3c0.1-49-41.7-89.2-93.1-89.2z"
                     fill="#FB952C"
-                    p-id="7751"></path>
+                    p-id="4734"></path>
                 </svg>
                 <span class="font-bold">{{ translate('settings.seriesSettings') }}</span>
               </div>
             </ng-template>
-            <p class="m-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
-            <div class="flex justify-end">
-              <p-button
-                label="{{ translate('settings.save') }}"
-                rounded
-                [icon]="'pi pi-save'"
-                [iconPos]="'left'"
-                [styleClass]="'bg-primary text-white mt-4 w-40'" />
+            <div class="flex flex-col gap-8 mt-8">
+              <!-- 主标题 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('seriesSettings.main_title_tv') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.MainTitleTv" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.MainTitleTv)?.errors?.['required'] &&
+                    configForm.get(settingsName.MainTitleTv)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 副标题 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('seriesSettings.second_title_tv') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.SecondTitleTv" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.SecondTitleTv)?.errors?.['required'] &&
+                    configForm.get(settingsName.SecondTitleTv)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 文件名 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('seriesSettings.file_name_tv') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.FileNameTv" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.FileNameTv)?.errors?.['required'] &&
+                    configForm.get(settingsName.FileNameTv)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <div class="flex justify-end">
+                <p-button
+                  label="{{ translate('settings.save') }}"
+                  rounded
+                  [icon]="'pi pi-save'"
+                  [iconPos]="'left'"
+                  [styleClass]="'bg-primary text-white mt-4 w-40'" />
+              </div>
             </div>
           </p-panel>
 
           <!-- 短剧设置 -->
-          <p-panel [styleClass]="'text-xl'" [collapsed]="true" [toggleable]="true">
+          <p-panel [styleClass]="'text-xl mb-8'" [collapsed]="dramasCollapsed" [toggleable]="true">
             <ng-template #header>
-              <div class="flex items-center gap-2 text-xl">
+              <div class="flex items-center gap-2 text-xl cursor-pointer" (click)="toggleDramas()">
                 <svg
                   t="1736750984350"
                   class="icon"
@@ -259,20 +556,66 @@
                 <span class="font-bold">{{ translate('settings.dramasSettings') }}</span>
               </div>
             </ng-template>
-            <p class="m-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-              mollit anim id est laborum.
-            </p>
-            <div class="flex justify-end">
-              <p-button
-                label="{{ translate('settings.save') }}"
-                rounded
-                [icon]="'pi pi-save'"
-                [iconPos]="'left'"
-                [styleClass]="'bg-primary text-white mt-4 w-40'" />
+            <div class="flex flex-col gap-8 mt-8">
+              <!-- 主标题 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('dramasSettings.main_title_playlet') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.MainTitlePlaylet" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.MainTitlePlaylet)?.errors?.['required'] &&
+                    configForm.get(settingsName.MainTitlePlaylet)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 副标题 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('dramasSettings.second_title_playlet') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.SecondTitlePlaylet" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.SecondTitlePlaylet)?.errors?.['required'] &&
+                    configForm.get(settingsName.SecondTitlePlaylet)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <!-- 文件名 -->
+              <div class="flex flex-col gap-2">
+                <label class="flex gap-1">
+                  {{ translate('dramasSettings.file_name_playlet') }}
+                  <span class="text-red-500">*</span>
+                </label>
+                <input pInputText required [formControlName]="settingsName.FileNamePlaylet" />
+                <small
+                  class="text-red-500"
+                  *ngIf="
+                    configForm.get(settingsName.FileNamePlaylet)?.errors?.['required'] &&
+                    configForm.get(settingsName.FileNamePlaylet)?.touched
+                  ">
+                  {{ translate('validation.required') }}
+                </small>
+              </div>
+
+              <div class="flex justify-end">
+                <p-button
+                  label="{{ translate('settings.save') }}"
+                  rounded
+                  [icon]="'pi pi-save'"
+                  [iconPos]="'left'"
+                  [styleClass]="'bg-primary text-white mt-4 w-40'" />
+              </div>
             </div>
           </p-panel>
         </div>

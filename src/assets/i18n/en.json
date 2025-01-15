@@ -33,17 +33,52 @@
     "picture_bed_api_token": "Picture Bed API Token",
     "screenshot_storage_path": "Screenshot Storage Path",
     "torrent_storage_path": "Torrent Storage Path",
-    "apiRelated": "API Related",
-    "storagePath": "Storage Path",
-    "screenShotSettings": "Screen Shot Settings",
-    "screenshotNumber": "Screenshot Number",
-    "screenshotThreshold": "Screenshot Threshold",
-    "screenshotStartPercentage": "Screenshot Start Percentage",
-    "screenshotEndPercentage": "Screenshot End Percentage",
-    "screenShotAutoUpload": "Auto Upload Screenshot",
-    "pasteScreenshotURL": "Paste Screenshot URL After Intro",
-    "deleteScreenshot": "Delete Screenshot",
-    "mediaInfoSuffix": "Media Info Suffix",
-    "generateThumbnail": "Generate Thumbnail"
+    "api_related": "API Related",
+    "storage_path": "Storage Path",
+    "screen_shot_settings": "Screen Shot Settings",
+    "screenshot_number": "Screenshot Number",
+    "screenshot_threshold": "Screenshot Threshold",
+    "screenshot_start_percentage": "Screenshot Start Percentage",
+    "screenshot_end_percentage": "Screenshot End Percentage",
+    "screen_shot_auto_upload": "Auto Upload Screenshot",
+    "paste_screenshot_url_after_intro": "Paste Screenshot URL After Intro",
+    "delete_screenshot": "Delete Screenshot",
+    "media_info_suffix": "Media Info Suffix",
+    "generate_thumbnail": "Generate Thumbnail",
+    "thumbnail_rows_number": "Thumbnail Rows",
+    "thumbnail_cols_number": "Thumbnail Cols",
+    "thumbnail_delay": "Thumbnail Delay",
+    "when_get_standard_file_name": "When Get Standard File Name",
+    "rename_file": "Rename File",
+    "make_dir": "Make the Same Movies Directory",
+    "second_confirm_file_name": "Second Confirm File Name",
+    "open_auto_feed_link": "Open Auto Feed Link",
+    "auto_feed_link": "Auto Feed Link"
+  },
+  "dramasSettings": {
+    "main_title_playlet": "Main Title",
+    "second_title_playlet": "Second Title",
+    "file_name_playlet": "File Name"
+  },
+  "seriesSettings": {
+    "main_title_tv": "Main Title",
+    "second_title_tv": "Second Title",
+    "file_name_tv": "File Name"
+  },
+  "moviesSettings": {
+    "main_title_movie": "Main Title",
+    "second_title_movie": "Second Title",
+    "file_name_movie": "File Name"
+  },
+  "validation": {
+    "required": "This field is required"
+  },
+  "messageService": {
+    "success": "Operation Successful",
+    "error": "Operation Failed",
+    "warning": "Warning",
+    "info": "Information",
+    "successTitle": "The items below have been updated:",
+    "warn": "Warn"
   }
 }

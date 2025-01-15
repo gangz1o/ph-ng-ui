@@ -4,7 +4,6 @@ export interface Settings {
 }
 
 export enum SettingsName {
-  ApiPort = 'api_port',
   AutoFeedLink = 'auto_feed_link',
   AutoUploadScreenshot = 'auto_upload_screenshot',
   DeleteScreenshot = 'delete_screenshot',
