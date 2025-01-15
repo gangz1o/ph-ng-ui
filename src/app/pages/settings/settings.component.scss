@@ -1,3 +1,25 @@
 p-fluid label {
   font-weight: bold;
 }
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid #ccc; /* 设置灰色的线 */
+  margin: 0 10px;
+}
+
+.divider span {
+  font-size: 14px;
+  color: #999; /* 设置文字颜色 */
+}

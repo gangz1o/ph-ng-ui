@@ -1,19 +1,12 @@
-import { provideHttpClient, withFetch } from '@angular/common/http'
-import {
-  ApplicationConfig,
-  isDevMode,
-  provideZoneChangeDetection,
-} from '@angular/core'
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http'
+import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core'
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'
-import {
-  provideRouter,
-  withEnabledBlockingInitialNavigation,
-  withInMemoryScrolling,
-} from '@angular/router'
+import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router'
 import { provideTransloco } from '@ngneat/transloco'
 import Aura from '@primeng/themes/aura'
 import { providePrimeNG } from 'primeng/config'
 import { AppRoutes } from './app.routes'
+import { LoadingInterceptor } from './core/interceptors/loading.interceptor'
 import { TranslocoHttpLoader } from './transloco-loader'
 
 export const appConfig: ApplicationConfig = {
@@ -27,7 +20,7 @@ export const appConfig: ApplicationConfig = {
       }),
       withEnabledBlockingInitialNavigation(),
     ),
-    provideHttpClient(withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([LoadingInterceptor])),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

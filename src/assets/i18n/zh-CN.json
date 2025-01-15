@@ -32,6 +32,55 @@
     "picture_bed_api_url": "图床 API 地址",
     "picture_bed_api_token": "图床 API Token",
     "screenshot_storage_path": "截图存储路径",
-    "torrent_storage_path": "种子存储路径"
+    "torrent_storage_path": "种子存储路径",
+    "api_related": "API 相关",
+    "storage_path": "存储路径",
+    "screen_shot_settings": "截图设置",
+    "screenshot_number": "截图数量",
+    "screenshot_threshold": "截图复杂度参数",
+    "screenshot_start_percentage": "截图开始百分比",
+    "screenshot_end_percentage": "截图结束百分比",
+    "screen_shot_auto_upload": "自动上传截图",
+    "paste_screenshot_url": "粘贴截图 URL 到简介后",
+    "delete_screenshot": "删除截图",
+    "media_info_suffix": "启用媒体信息后缀",
+    "generate_thumbnail": "生成缩略图",
+    "thumbnail_rows_number": "缩略图行数",
+    "thumbnail_cols_number": "缩略图列数",
+    "thumbnail_delay": "缩略图延迟",
+    "when_get_standard_file_name": "当获取标准命名时",
+    "rename_file": "重命名文件",
+    "make_dir": "创建同名电影文件夹",
+    "second_confirm_file_name": "二次确认文件名",
+    "open_auto_feed_link": "自动打开AutoFeed链接",
+    "auto_feed_link": "Auto Feed链接"
+  },
+  "dramasSettings": {
+    "main_title_playlet": "主标题",
+    "second_title_playlet": "副标题",
+    "file_name_playlet": "文件名"
+  },
+  "moviesSettings": {
+    "main_title_movie": "主标题",
+    "second_title_movie": "副标题",
+    "file_name_movie": "文件名"
+  },
+  "seriesSettings": {
+    "main_title_tv": "主标题",
+    "second_title_tv": "副标题",
+    "file_name_tv": "文件名"
+  },
+  "validation": {
+    "required": "此字段为必填项"
+  },
+  "messageService": {
+    "success": "操作成功",
+    "error": "操作失败",
+    "warning": "警告",
+    "info": "提示",
+    "successTitle": "以下项目已更新:",
+    "errorTitle": "以下项目更新失败:",
+    "noChanges": "没有设置被修改",
+    "updateError": "更新设置时发生错误，请重试"
   }
 }
